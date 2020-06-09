@@ -4,6 +4,9 @@ target/
 !**/src/main/**
 !**/src/test/**
 
+output_box
+input_box
+
 ### STS ###
 .apt_generated
 .classpath

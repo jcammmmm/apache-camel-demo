@@ -1,4 +1,4 @@
-package com.jcamilo;
+package com.jcamilo.demo1;
 
 import org.apache.camel.builder.RouteBuilder;
 
