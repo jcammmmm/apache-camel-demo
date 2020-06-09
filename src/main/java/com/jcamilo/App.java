@@ -1,17 +1,20 @@
 package com.jcamilo;
 
-/**
- * Hello world!
- */
-public final class App {
-    private App() {
-    }
+import org.apache.camel.CamelContext;
+import org.apache.camel.impl.DefaultCamelContext;
 
-    /**
-     * Says hello to the world.
-     * @param args The arguments of the program.
-     */
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+public final class App {
+  private App() {
+
+  }
+
+  public static void main(String[] args) {
+    CamelContext context = new DefaultCamelContext();
+    try {
+      context.addRoutes(new Route());
+      context.start();
+    } catch (Exception e) {
+      e.printStackTrace();
     }
+  }
 }
