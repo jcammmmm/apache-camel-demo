@@ -1,13 +1,13 @@
-package com.jcamilo.demo.jsmexample;
+package com.jcamilo.demo.jmsexample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JsmExampleApplication {
+public class JmsExampleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JsmExampleApplication.class, args);
+		SpringApplication.run(JmsExampleApplication.class, args);
 	}
 
 }

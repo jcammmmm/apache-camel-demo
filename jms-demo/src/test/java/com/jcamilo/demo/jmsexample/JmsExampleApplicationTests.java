@@ -1,10 +1,10 @@
-package com.jcamilo.demo.jsmexample;
+package com.jcamilo.demo.jmsexample;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JsmExampleApplicationTests {
+class JmsExampleApplicationTests {
 
 	@Test
 	void contextLoads() {
