@@ -37,7 +37,9 @@ public class ProdAndConsumer {
         from("direct:start")
         .process(new Processor() { // processor added in the midle
           public void process(Exchange exchange) throws Exception {
-            System.out.println("Processor is running...");
+            String mssge = exchange.getIn().getBody(String.class);
+            System.out.println(mssge + " by jcamilo!");
+            exchange.getOut().setBody("buahahah");
           }
         })
         .to("seda:end");
