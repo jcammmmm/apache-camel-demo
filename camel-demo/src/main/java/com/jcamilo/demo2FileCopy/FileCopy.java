@@ -1,4 +1,4 @@
-package com.jcamilo.demo2;
+package com.jcamilo.demo2FileCopy;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;

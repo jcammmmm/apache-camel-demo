@@ -1,4 +1,4 @@
-package com.jcamilo.demo3;
+package com.jcamilo.demo3ProdCons;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.ConsumerTemplate;

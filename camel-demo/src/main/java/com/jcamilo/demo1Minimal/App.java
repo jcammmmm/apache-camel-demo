@@ -1,4 +1,4 @@
-package com.jcamilo.demo1;
+package com.jcamilo.demo1Minimal;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.impl.DefaultCamelContext;
