@@ -1,3 +1,5 @@
 {
-  "workbench.colorTheme": "Solarized Dark"
+  "workbench.colorTheme": "Community Material Theme Darker",
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": false
 }
