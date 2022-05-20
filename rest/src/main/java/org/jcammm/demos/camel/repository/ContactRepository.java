@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.jcammm.demos.camel.dto.Contact;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 

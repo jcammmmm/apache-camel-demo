@@ -3,7 +3,7 @@ package org.jcammm.demos.camel.config;
 
 import org.jcammm.demos.camel.dto.Contact;
 import org.jcammm.demos.camel.repository.ContactRepository;
-import org.jcammm.demos.camel.service.UUIDGenerator;
+import org.jcammm.demos.camel.utils.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -34,7 +34,7 @@ public class FillUpCache implements CommandLineRunner {
             Contact.builder()
                 .contactId(uuidGenerator.get())
                 .firstName("Frank")
-                .lastName("Chevysheb")
+                .lastName("Camilo")
                 .phoneNumber("333221111")
                 .emailAddress("juan@camilo.xyz")
                 .streetAddress("Av 11 12 13")

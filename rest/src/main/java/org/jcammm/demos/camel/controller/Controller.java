@@ -13,6 +13,10 @@ public class Controller {
     @Autowired
     private ContactRepository repository;
 
+    public Contact post(Contact c) {
+        return repository.insert(c);
+    }
+
     public Contact get(String uuid) {
         return repository.findById(uuid);
     }

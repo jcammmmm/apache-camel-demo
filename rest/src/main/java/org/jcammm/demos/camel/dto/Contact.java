@@ -1,12 +1,16 @@
 package org.jcammm.demos.camel.dto;
 
 
+import javax.validation.constraints.Email;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class Contact {
     private String contactId;

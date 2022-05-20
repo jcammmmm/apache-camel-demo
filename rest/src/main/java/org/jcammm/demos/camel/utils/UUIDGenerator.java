@@ -1,4 +1,4 @@
-package org.jcammm.demos.camel.service;
+package org.jcammm.demos.camel.utils;
 
 import java.util.UUID;
 
