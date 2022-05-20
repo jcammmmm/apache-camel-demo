@@ -2,20 +2,17 @@ package org.jcammm.demos.camel;
 
 import java.util.List;
 
-import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.servlet.CamelHttpTransportServlet;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.jcammm.demos.camel.dto.Contact;
-import org.jcammm.demos.camel.exception.DataOutOfFieldException;
-import org.jcammm.demos.camel.utils.Validator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-@SpringBootApplication // (exclude = { WebSocketServletAutoConfiguration.class, AopAutoConfiguration.class, OAuth2ResourceServerAutoConfiguration.class, EmbeddedWebServerFactoryCustomizerAutoConfiguration.class })
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {
@@ -64,8 +61,8 @@ public class Application {
                     .type(Contact.class)
                     .outType(Contact.class)
                     .to("bean:controller?method=put")
-                    // HTTP PATCH
-                    .patch()
+                // HTTP PATCH
+                .patch()
                     .description("Updates a contact given a contact with its id.")
                     .type(Contact.class)
                     .outType(Contact.class)
@@ -76,15 +73,20 @@ public class Application {
                     .outType(List.class)
                     .to("bean:controller?method=all")
                 // HTTP: GET /contacts/745bfd98-4192-4f04-acae-c0dfed9d12fc
-                .get("/{id}")
+                .get("/{uuid}")
                     .description("Obtain one contact with its id.")
                     .outType(List.class)
-                    .to("bean:controller?method=get(${header.id})")
+                    .to("bean:controller?method=get(${header.uuid})")
                 // HTTP: GET /contacts/find?firstName=Juan&lastName=Camilo
                 .get("/find")
-                    .description("Find a contacts by its first or last name")
+                    .description("Find a contacts by its first or last name.")
                     .outType(Contact.class)
-                    .to("bean:controller?method=get(${header.firstName}, ${header.lastName})");
+                    .to("bean:controller?method=get(${header.firstName}, ${header.lastName})")
+                // HTTP: DELETE
+                .delete("/{uuid}")
+                    .description("Delete the contacts that matches the contact query.")
+                    .outType(Contact.class)
+                    .to("bean:controller?method=delete(${header.uuid})");
         }
     }
 }

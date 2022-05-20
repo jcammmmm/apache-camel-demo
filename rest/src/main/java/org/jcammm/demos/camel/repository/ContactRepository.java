@@ -1,7 +1,6 @@
 package org.jcammm.demos.camel.repository;
 
 import java.util.Collections;
-import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -41,22 +40,6 @@ public class ContactRepository {
     }
 
     /**
-     * First search the ids affected and then removes it to avoid 
-     * {@link ConcurrentModificationException}
-     * @param query
-     * @return
-     */
-    public List<String> delete(Contact query) {
-        List<String> result = new LinkedList<>();
-        for (Contact c : contacts.values())
-            if (c.equals(query))
-                result.add(c.getContactId()); 
-        for (String id : result)
-            contacts.remove(id);
-        return result;
-    }
-
-    /**
      * Returns the contact asociated with the provided id
      * @param id
      * @return
@@ -80,11 +63,21 @@ public class ContactRepository {
         return result;
     }
 
+    /**
+     * Deletes a contact
+     * @param query
+     * @return null if there is not contact associated with the uuid. The contact
+     * if someone was deleted.
+     */
+    public Contact delete(String uuid) {
+        return contacts.remove(uuid);
+    }
+
     public String toString() {
         return contacts.toString();
     }
 
-    public static void main(String[] args) {
+    public static void mainx(String[] args) {
         ContactRepository cr = new ContactRepository();
         cr.insert(new Contact("1", "uno", "eins", "un", "one", "um"));
         System.out.println(cr);

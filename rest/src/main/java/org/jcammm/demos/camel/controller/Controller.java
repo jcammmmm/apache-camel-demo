@@ -49,4 +49,8 @@ public class Controller {
     public List<Contact> all() {
         return repository.find(new Contact("*", "*", "*", "*", "*", "*"));
     }
+
+    public Contact delete(String uuid) {
+        return repository.delete(uuid);
+    }
 }

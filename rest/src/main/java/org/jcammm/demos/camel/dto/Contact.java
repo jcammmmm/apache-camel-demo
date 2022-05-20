@@ -13,7 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Contact {
-    private String contactId;
+    @Builder.Default
+    private String contactId        = "";
     @Builder.Default
     private String firstName        = "";
     @Builder.Default
