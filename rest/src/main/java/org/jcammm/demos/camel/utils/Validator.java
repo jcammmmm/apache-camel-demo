@@ -1,5 +1,6 @@
 package org.jcammm.demos.camel.utils;
 
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 import com.google.i18n.phonenumbers.NumberParseException;
@@ -7,6 +8,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.jcammm.demos.camel.config.RoutesId;
 import org.jcammm.demos.camel.dto.Contact;
 import org.jcammm.demos.camel.exception.DataOutOfFieldException;
 
@@ -33,12 +35,23 @@ public class Validator implements Processor {
         }
     }
 
+    public static void uuid(String uuid) throws DataOutOfFieldException {
+        try {
+            UUID.fromString(uuid);
+        } catch (IllegalArgumentException iae) {
+            throw new DataOutOfFieldException("Id invalid.", iae);
+        }
+    }
+
     @Override
     public void process(Exchange exchange) throws DataOutOfFieldException {
         Contact c = exchange.getIn().getBody(Contact.class);
-        name(c.getFirstName());
-        name(c.getLastName());
-        phone(c.getPhoneNumber());
-        email(c.getEmailAddress());
+        String routeId = exchange.getFromRouteId();
+        if (routeId.equals(RoutesId.POST.getName())) {
+            name(c.getFirstName());
+            name(c.getLastName());
+            phone(c.getPhoneNumber());
+            email(c.getEmailAddress());
+        }
     }
 }

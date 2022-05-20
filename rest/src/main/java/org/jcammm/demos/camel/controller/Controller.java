@@ -23,10 +23,12 @@ public class Controller {
     }
 
     public Contact put(String uuid, Contact c) {
+        c.setContactId(uuid);
         return repository.insert(c);
     }
 
     public Contact patch(String uuid, Contact c) {
+        c.setContactId(uuid);
         return repository.update(c);
     }
 

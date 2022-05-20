@@ -25,6 +25,7 @@ class RoutesConfig extends RouteBuilder {
             .produces("application/json")
             // HTTP: POST /contacts
             .post()
+                .id(RoutesId.POST.getName())
                 .description("Store a contact.")
                 .type(Contact.class)
                 .outType(Contact.class)
