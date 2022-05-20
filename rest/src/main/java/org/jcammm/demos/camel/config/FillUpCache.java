@@ -22,7 +22,7 @@ public class FillUpCache implements CommandLineRunner {
 
         repository.insert(
             Contact.builder()
-                .contactId(uuidGenerator.get())
+                .contactId("99663413-c8b4-4cb0-901b-4c3cc06eda31")
                 .firstName("Juan")
                 .lastName("Camilo")
                 .phoneNumber("333221111")
@@ -32,7 +32,7 @@ public class FillUpCache implements CommandLineRunner {
 
         repository.insert(
             Contact.builder()
-                .contactId(uuidGenerator.get())
+                .contactId("99663413-c8b4-4cb0-901b-4c3cc06eda32")
                 .firstName("Frank")
                 .lastName("Camilo")
                 .phoneNumber("333221111")
@@ -42,7 +42,7 @@ public class FillUpCache implements CommandLineRunner {
 
         repository.insert(
             Contact.builder()
-                .contactId(uuidGenerator.get())
+                .contactId("99663413-c8b4-4cb0-901b-4c3cc06eda33")
                 .firstName("Heinrich")
                 .lastName("Bocadro")
                 .phoneNumber("333221111")
@@ -52,7 +52,7 @@ public class FillUpCache implements CommandLineRunner {
                 
         repository.insert(
             Contact.builder()
-                .contactId(uuidGenerator.get())
+                .contactId("99663413-c8b4-4cb0-901b-4c3cc06eda34")
                 .firstName("Mildrek")
                 .lastName("Haslnok")
                 .phoneNumber("333221111")

@@ -23,26 +23,21 @@ public class ContactRepository {
      * Inserts a contact on the hashmap. We use hashmap in order to have O(1) complexity
      * when user searchs by id.
      * @param c the contact to insert
-     * @return the inserted contact
+     * @return the previous contact if a contact with the same id exists.
      */
     public Contact insert(Contact c) {
         return contacts.put(c.getContactId(), c);
     }
 
     /**
-     * Replaces the contacts that matches the query with the provided update.
-     * @param query
-     * @param update
-     * @return
+     * Update a contact field by field.
+     * @param update a contact update following the any string '*' convention.
+     * @return the previous contact before the update.
      */
-    public List<String> replace(Contact query, Contact update) {
-        List<String> updates = new LinkedList<>();
-        for(Contact c : contacts.values())
-            if (c.equals(query)) {
-                c = update;
-                updates.add(c.getContactId());
-            }
-        return updates;
+    public Contact update(Contact update) {
+        Contact c = contacts.get(update.getContactId());
+        c.update(update);
+        return c;
     }
 
     /**

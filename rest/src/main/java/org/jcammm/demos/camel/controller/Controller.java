@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jcammm.demos.camel.dto.Contact;
 import org.jcammm.demos.camel.repository.ContactRepository;
+import org.jcammm.demos.camel.utils.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +14,20 @@ public class Controller {
     @Autowired
     private ContactRepository repository;
 
+    @Autowired
+    private UUIDGenerator uGenerator;
+
     public Contact post(Contact c) {
+        c.setContactId(uGenerator.get());
         return repository.insert(c);
+    }
+
+    public Contact put(Contact c) {
+        return repository.insert(c);
+    }
+
+    public Contact patch(Contact c) {
+        return repository.update(c);
     }
 
     public Contact get(String uuid) {
@@ -30,7 +43,6 @@ public class Controller {
             .emailAddress("*")
             .streetAddress("*")
             .build();
-
         return repository.find(query);
     }
 

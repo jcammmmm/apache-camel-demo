@@ -1,7 +1,7 @@
 package org.jcammm.demos.camel.dto;
 
 
-import javax.validation.constraints.Email;
+import java.lang.reflect.Field;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,11 +14,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Contact {
     private String contactId;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String emailAddress;
-    private String streetAddress;
+    @Builder.Default
+    private String firstName        = "";
+    @Builder.Default
+    private String lastName         = "";
+    @Builder.Default
+    private String phoneNumber      = "";
+    @Builder.Default
+    private String emailAddress     = "";
+    @Builder.Default
+    private String streetAddress    = "";
 
     /**
      * The equals method is overrided here to make more readable the code when making 
@@ -60,18 +65,33 @@ public class Contact {
         return s1.equals("*") || s2.equals("*") || s1.equals(s2);
     }
 
-    public static void mainx(String[] args) {
+    public void update(Contact update) {
+        for (Field f : Contact.class.getDeclaredFields()) {
+            try {
+                f.setAccessible(true);
+                String val = (String) f.get(update);
+                if (val != null && !val.equals("*"))
+                    f.set(this, val);
+            } catch (IllegalAccessException iae) {
+                throw new RuntimeException("This will never happen!");
+            }
+        }
+    }
+
+    public static void mainxx(String[] args) {
         Contact c1 = new Contact("1", "uno", "one", "un", "eins", "um");
         Contact cx = new Contact("1", "uno", "one", "un", "eins", "um");
         Contact ca = new Contact("1", "uno", "*", "un", "eins", "um");
         Contact c2 = new Contact("2", "dos", "two", "deux", "zwei", "deus");
         Contact cb = new Contact("2", "*", "two", "deux", "zwei", "deus");
 
-        System.out.println(c1.equals(c2));
-        System.out.println(cx.equals(c1));
-        System.out.println(c1.equals(ca));
-        System.out.println(c1.equals(c2));
-        System.out.println(cb.equals(c2));
+        c1.update(new Contact("*", "xxxxx", "xxxxx", "xxxxx", "xxxxx", "xxxxx"));
+        System.out.println(c1);
+        // System.out.println(c1.equals(c2));
+        // System.out.println(cx.equals(c1));
+        // System.out.println(c1.equals(ca));
+        // System.out.println(c1.equals(c2));
+        // System.out.println(cb.equals(c2));
 
     }
 }
