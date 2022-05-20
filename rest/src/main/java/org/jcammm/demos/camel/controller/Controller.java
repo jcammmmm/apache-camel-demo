@@ -22,11 +22,11 @@ public class Controller {
         return repository.insert(c);
     }
 
-    public Contact put(Contact c) {
+    public Contact put(String uuid, Contact c) {
         return repository.insert(c);
     }
 
-    public Contact patch(Contact c) {
+    public Contact patch(String uuid, Contact c) {
         return repository.update(c);
     }
 

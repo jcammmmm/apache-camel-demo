@@ -55,18 +55,18 @@ public class Application {
                     .type(Contact.class)
                     .outType(Contact.class)
                     .to("bean:controller?method=post")
-                // HTTP: PUT
-                .put()
+                // HTTP: PUT/745bfd98-4192-4f04-acae-c0dfed9d12fc
+                .put("/{uuid}")
                     .description("Replace a contact given a contact with its id.")
                     .type(Contact.class)
                     .outType(Contact.class)
-                    .to("bean:controller?method=put")
-                // HTTP PATCH
-                .patch()
+                    .to("bean:controller?method=put(${header.uuid}, ${body})")
+                // HTTP PATCH/745bfd98-4192-4f04-acae-c0dfed9d12fc
+                .patch("/{uuid}")
                     .description("Updates a contact given a contact with its id.")
                     .type(Contact.class)
                     .outType(Contact.class)
-                    .to("bean:controller?method=patch")
+                    .to("bean:controller?method=patch(${header.uuid}, ${body})")
                 // HTTP: GET /contacts/all
                 .get("/all")
                     .description("Retrieve all contacts (without pagination).")
@@ -82,7 +82,7 @@ public class Application {
                     .description("Find a contacts by its first or last name.")
                     .outType(Contact.class)
                     .to("bean:controller?method=get(${header.firstName}, ${header.lastName})")
-                // HTTP: DELETE
+                // HTTP: DELETE/745bfd98-4192-4f04-acae-c0dfed9d12fc
                 .delete("/{uuid}")
                     .description("Delete the contacts that matches the contact query.")
                     .outType(Contact.class)
