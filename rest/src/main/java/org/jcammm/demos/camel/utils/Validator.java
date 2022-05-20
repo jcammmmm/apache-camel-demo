@@ -34,7 +34,7 @@ public class Validator implements Processor {
     }
 
     @Override
-    public void process(Exchange exchange) throws Exception {
+    public void process(Exchange exchange) throws DataOutOfFieldException {
         Contact c = exchange.getIn().getBody(Contact.class);
         name(c.getFirstName());
         name(c.getLastName());

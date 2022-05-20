@@ -5,11 +5,10 @@ import org.jcammm.demos.camel.dto.Contact;
 import org.jcammm.demos.camel.repository.ContactRepository;
 import org.jcammm.demos.camel.utils.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FillUpCache implements CommandLineRunner {
+public class FillUpCache {
 
     @Autowired
     ContactRepository repository;
@@ -17,7 +16,6 @@ public class FillUpCache implements CommandLineRunner {
     @Autowired
     UUIDGenerator uuidGenerator;
 
-    @Override
     public void run(String... args) throws Exception {
 
         repository.insert(
