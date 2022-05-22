@@ -2,7 +2,6 @@ package org.jcammm.demos.camel;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.jcammm.demos.camel.dto.Contact;

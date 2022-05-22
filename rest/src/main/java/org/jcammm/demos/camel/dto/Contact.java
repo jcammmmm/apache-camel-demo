@@ -78,21 +78,4 @@ public class Contact {
             }
         }
     }
-
-    public static void mainxx(String[] args) {
-        Contact c1 = new Contact("1", "uno", "one", "un", "eins", "um");
-        Contact cx = new Contact("1", "uno", "one", "un", "eins", "um");
-        Contact ca = new Contact("1", "uno", "*", "un", "eins", "um");
-        Contact c2 = new Contact("2", "dos", "two", "deux", "zwei", "deus");
-        Contact cb = new Contact("2", "*", "two", "deux", "zwei", "deus");
-
-        c1.update(new Contact("*", "xxxxx", "xxxxx", "xxxxx", "xxxxx", "xxxxx"));
-        System.out.println(c1);
-        // System.out.println(c1.equals(c2));
-        // System.out.println(cx.equals(c1));
-        // System.out.println(c1.equals(ca));
-        // System.out.println(c1.equals(c2));
-        // System.out.println(cb.equals(c2));
-
-    }
 }

@@ -1,6 +1,8 @@
 package org.jcammm.demos.camel.controller;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.jcammm.demos.camel.dto.Contact;
 import org.jcammm.demos.camel.repository.ContactRepository;
@@ -17,11 +19,21 @@ public class Controller {
     @Autowired
     private UUIDGenerator uGenerator;
 
-    public Contact post(Contact c) {
+    /**
+     * @param c the contact info. to store
+     * @return the uuid for the new created contact
+     */
+    public Map<String, String> post(Contact c) {
         c.setContactId(uGenerator.get());
-        return repository.insert(c);
+        repository.insert(c);
+        return Collections.singletonMap("uuid", c.getContactId());
     }
 
+    /**
+     * @param uuid the contact uuid to modify.
+     * @param c the new info to replace.
+     * @return the previous data for the contact.
+     */
     public Contact put(String uuid, Contact c) {
         c.setContactId(uuid);
         return repository.insert(c);
